@@ -6,6 +6,8 @@
     "newline-before-return": "error",
     "object-curly-newline": "off",
     "linebreak-style": "off",
+    "import/extensions": "error",
+    "import/no-unresolved": "error",
     "no-console": ["error", { "allow": ["warn", "error", "info"] }]
   }
 }
