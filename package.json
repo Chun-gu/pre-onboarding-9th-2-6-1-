@@ -12,7 +12,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "postinstall": "husky install && git config commit.template .gitmessage.txt",
+    "postinstall": "husky install",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
