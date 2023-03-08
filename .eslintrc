@@ -1,0 +1,10 @@
+{
+  "extends": ["react-app", "airbnb", "airbnb/hooks"],
+  "rules": {
+    "no-console": ["error", { "allow": ["warn", "error", "info"] }],
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "newline-before-return": "error",
+    "object-curly-newline": "off"
+  }
+}
