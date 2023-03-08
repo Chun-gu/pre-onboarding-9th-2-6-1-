@@ -4,6 +4,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
+import { Layout } from '../components';
 import { ErrorPage, MainPage, ReservationsPage } from '../pages';
 
 export default function Router() {
@@ -15,12 +16,20 @@ export default function Router() {
     },
     {
       path: '/main',
-      element: <MainPage />,
+      element: (
+        <Layout>
+          <MainPage />
+        </Layout>
+      ),
       errorElement: <ErrorPage />,
     },
     {
       path: '/reservations',
-      element: <ReservationsPage />,
+      element: (
+        <Layout>
+          <ReservationsPage />
+        </Layout>
+      ),
       errorElement: <ErrorPage />,
     },
   ]);
