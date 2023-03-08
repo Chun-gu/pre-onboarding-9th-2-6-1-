@@ -2,8 +2,8 @@ import { ProductList } from '../components';
 
 export default function Main() {
   return (
-    <div>
+    <section>
       <ProductList />
-    </div>
+    </section>
   );
 }
