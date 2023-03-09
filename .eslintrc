@@ -8,6 +8,14 @@
     "linebreak-style": "off",
     "import/extensions": "error",
     "import/no-unresolved": "error",
+    "implicit-arrow-linebreak": "off",
+    "function-paren-newline": "off",
+    "react/prop-types": "off",
+    "no-param-reassign": ["error", { "props": false }],
+    "operator-linebreak": ["error", "after"],
+    "react/jsx-closing-bracket-location": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-props-no-spreading": "off",
     "no-console": ["error", { "allow": ["warn", "error", "info"] }]
   }
 }
