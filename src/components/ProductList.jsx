@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 
-import useProduct from '../hooks/useProduct';
+import { UnorderedList, ListItem } from '@chakra-ui/react';
+
+import { useProduct } from '../hooks';
 import ProductCard from './ProductCard';
 
 export default function ProductList() {
@@ -13,17 +15,20 @@ export default function ProductList() {
       initProducts(data);
     }
 
-    if (products.length === 0) fetchData();
-  }, [initProducts, products.length]);
+    if (!products.length) fetchData();
+  }, [initProducts, products]);
 
   return (
-    <ul>
+    <UnorderedList
+      display="grid"
+      gridTemplateColumns="repeat(2, 1fr)"
+      gap="20px">
       {products &&
         products.map((product) => (
-          <li key={product.idx}>
+          <ListItem key={product.idx} listStyleType="none">
             <ProductCard product={product} />
-          </li>
+          </ListItem>
         ))}
-    </ul>
+    </UnorderedList>
   );
 }
