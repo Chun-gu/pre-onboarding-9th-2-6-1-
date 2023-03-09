@@ -11,7 +11,7 @@ export default function Header() {
       <nav>
         <ul>
           {links.map(({ to, name }) => (
-            <li>
+            <li key={to}>
               <NavLink to={to}>{name}</NavLink>
             </li>
           ))}
