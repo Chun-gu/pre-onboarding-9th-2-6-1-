@@ -1,9 +1,16 @@
-import { ProductList } from '../components';
+import { Heading } from '@chakra-ui/react';
 
-export default function Main() {
+import { PriceFilter, ProductList, SpaceFilter } from '../components';
+
+export default function MainPage() {
   return (
-    <section>
+    <>
+      <Heading pt="72px" pb="40px">
+        여행 상품 목록
+      </Heading>
+      <SpaceFilter />
+      <PriceFilter />
       <ProductList />
-    </section>
+    </>
   );
 }
