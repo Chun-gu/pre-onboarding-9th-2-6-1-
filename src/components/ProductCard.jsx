@@ -1,5 +1,17 @@
+import useProduct from '../hooks/useProduct';
+
 export default function ProductCard({ product }) {
-  const { idx, name, mainImage, price, spaceCategory } = product;
+  const { idx, name, mainImage, price, spaceCategory, isReserved } = product;
+
+  const { makeReservation, cancelReservation } = useProduct();
+
+  function onClickReserve() {
+    makeReservation(idx);
+  }
+
+  function onClickCancel() {
+    cancelReservation(idx);
+  }
 
   return (
     <div>
@@ -8,7 +20,15 @@ export default function ProductCard({ product }) {
       <span>{name}</span>
       <span>{price}</span>
       <span>{spaceCategory}</span>
-      <button type="button">예약</button>
+      {isReserved ? (
+        <button type="button" onClick={onClickCancel}>
+          취소
+        </button>
+      ) : (
+        <button type="button" onClick={onClickReserve}>
+          예약
+        </button>
+      )}
     </div>
   );
 }

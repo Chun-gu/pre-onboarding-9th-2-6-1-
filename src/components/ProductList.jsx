@@ -1,26 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
+import useProduct from '../hooks/useProduct';
 import ProductCard from './ProductCard';
 
 export default function ProductList() {
-  const [products, setProducts] = useState([]);
+  const [products, { initProducts }] = useProduct();
 
   useEffect(() => {
     async function fetchData() {
       const response = await fetch('./travelProductData.json');
       const data = await response.json();
-      setProducts(data);
+      initProducts(data);
     }
-    fetchData();
-  }, []);
+
+    if (products.length === 0) fetchData();
+  }, [initProducts, products.length]);
 
   return (
     <ul>
-      {products.map((product) => (
-        <li key={product.idx}>
-          <ProductCard product={product} />
-        </li>
-      ))}
+      {products &&
+        products.map((product) => (
+          <li key={product.idx}>
+            <ProductCard product={product} />
+          </li>
+        ))}
     </ul>
   );
 }
