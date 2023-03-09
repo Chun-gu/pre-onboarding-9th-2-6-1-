@@ -14,7 +14,7 @@ const productsSlice = createSlice({
         isReserved: false,
         purchases: 0,
       }));
-      state.products.push(...products);
+      state.products = products;
     },
     reserve(state, action) {
       const targetProduct = state.products.find(
@@ -22,6 +22,7 @@ const productsSlice = createSlice({
       );
       if (targetProduct) {
         targetProduct.isReserved = !targetProduct.isReserved;
+        targetProduct.purchases += 1;
       }
     },
     cancel(state, action) {
@@ -30,6 +31,26 @@ const productsSlice = createSlice({
       );
       if (targetProduct) {
         targetProduct.isReserved = !targetProduct.isReserved;
+        targetProduct.purchases = 0;
+      }
+    },
+    increment(state, action) {
+      const targetProduct = state.products.find(
+        (product) => product.idx === action.payload.idx,
+      );
+      if (
+        targetProduct &&
+        targetProduct.purchases !== targetProduct.maximumPurchases
+      ) {
+        targetProduct.purchases += 1;
+      }
+    },
+    decrement(state, action) {
+      const targetProduct = state.products.find(
+        (product) => product.idx === action.payload.idx,
+      );
+      if (targetProduct && targetProduct.purchases !== 0) {
+        targetProduct.purchases -= 1;
       }
     },
   },
@@ -38,4 +59,4 @@ const productsSlice = createSlice({
 const { actions, reducer: productsReducer } = productsSlice;
 
 export default productsReducer;
-export const { set, reserve, cancel } = actions;
+export const { set, reserve, cancel, increment, decrement } = actions;
